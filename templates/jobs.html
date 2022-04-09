@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id = "headline2"><h2>Works log</h2></div>
+{% for i in range(num) %}
+    <h3>Action # {{i + 1}} </h3>
+    <table class="table table-striped">
+        <tr>
+            <th scope="col">Title of activity</th>
+            <th scope="col">Team leader</th>
+            <th scope="col">Duration</th>
+            <th scope="col">List of collaborators</th>
+            <th scope="col">Is finished</th>
+        </tr>
+        <tr>
+            <td class="table-info">{{jobs[i].job}}</td>
+            <td class="table-info">{{jobs[i].user.surname}} {{jobs[i].user.name}}</td>
+            <td class="table-info">{{jobs[i].work_size}} hours</td>
+            <td class="table-info">{{jobs[i].collaborators}}</td>
+            {% if jobs[i].is_finished %}
+                <td class="table-success">Is finished</td>
+            {% else %}
+                <td class="table-danger">Is not finished</td>
+            {% endif %}
+        </tr>
+    </table>
+{% endfor %}
+{% endblock %}
